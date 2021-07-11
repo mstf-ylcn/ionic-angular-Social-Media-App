@@ -134,10 +134,10 @@ resize()
 
 
 }
-
+page=0;
 loadimage(event?)
 {
-  this.http.get(`${this.api.url}photos/random?client_id=${this.api.key}&count=${this.api.count}
+  this.http.get(`${this.api.url}photos/random?client_id=${this.api.key}&count=${this.api.count}&page=${this.page}
    `).subscribe(res => {
     console.log(res);
     this.images=this.images.concat(res);
@@ -294,7 +294,7 @@ modal_pasive(){
    loadData(event) {
      setTimeout(() => {
        console.log('Loading more image');
-      //  this.api.page++;
+       this.page++;
         this.loadimage(event);
        this.ngAfterViewInit();
 
@@ -311,6 +311,7 @@ modal_pasive(){
 
      this.images=[];
      this.a=0;
+     this.page=0;
      this.present();
      this.loadimage();
      this.ngAfterViewInit();
