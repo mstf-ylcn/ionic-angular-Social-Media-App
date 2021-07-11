@@ -1,7 +1,7 @@
 # ionic-angular-Social-Media-App
 
 
-imports:
+<p>imports:</p>
 
 ionic cordova plugin add cordova-plugin-x-socialsharing
 npm install @ionic-native/social-sharing
