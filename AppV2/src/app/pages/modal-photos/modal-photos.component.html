@@ -1,0 +1,48 @@
+<ion-content class="animation" (swipe)="closeModal()"   >
+
+
+    <!-- <ion-icon  style="position: absolute; opacity: 0.5;margin-top:10%;margin-left: 2%;
+       font-size: 32px;color: gray;" name="chevron-back-outline" 
+      (click)="closeModal()"></ion-icon>  -->
+   
+
+<div  #height  >
+
+       <div >
+        <img style="object-fit:cover; width: 100%; border-radius: 20px 20px 10px 10px;" [src]="photoid.urls.thumb" >
+   
+     <div>
+
+   
+      <ion-list>
+
+        <ion-item>
+
+        <ion-avatar slot="start"  ><img [src]="photoid.user.profile_image.large" alt="" (click)="openbrowser(photoid.user.links.html)" ></ion-avatar>
+        <ion-label (click)="openbrowser(photoid.user.links.html)" style="font-size: 14px;" >{{photoid.user.username}}  </ion-label>
+        <div style="margin-top: 1%;">
+         
+          <ion-icon class="hearthbeat" style="font-size: 38px;float:left;" name="heart-outline" *ngIf="hidecontrol==1"
+           (click)="likes(photoid.urls.regular)"></ion-icon> <!-- like -->
+
+          <ion-icon class="hearthbeat"  *ngIf="hidecontrol==0" style="font-size: 38px;color: red; float: left;"  
+          (click)="likes(photoid.urls.regular)"  name="heart-dislike"></ion-icon>
+          
+
+        <ion-icon  style="font-size: 32px;float: right;" name="share-outline" (click)="share(photoid.links.html)"></ion-icon>  <!-- share -->
+      </div>
+
+      </ion-item>
+      </ion-list>
+      </div>
+       </div> 
+      
+
+        
+
+      </div>
+
+
+  
+
+</ion-content>

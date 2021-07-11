@@ -1,0 +1,14 @@
+ion-item{
+    --background:transparent;
+    --highlight-color-focused: grey;
+}   
+
+.item
+{
+    --highlight-color-focused: grey;
+
+}
+.item-interactive.ion-valid
+{
+  --highlight-background:grey;
+}

@@ -1,0 +1,111 @@
+
+<ion-content  [fullscreen]="true" [class]="modal_css"  [scrollEvents]="true"
+(ionScrollStart)="ScrollStart($event)"
+(ionScroll)="Scrolling($event)"
+(ionScrollEnd)="ScrollEnd()" >  
+  <!-- [disabled]="refresh_control" -->
+
+
+  <ion-refresher slot="fixed" [disabled]="refresh_control"   (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content 
+      pullingIcon="refresh-outline"
+      refreshingSpinner="crescent"
+      refreshingText="">
+    </ion-refresher-content>
+  </ion-refresher>
+
+ <div *ngIf="hide2" >
+
+
+  <!--   pullingIcon="reload-outline"  refresher 
+
+    <ion-header   *ngIf="hide"    [translucent]="true" class="ion-no-border" >
+      <ion-item style="--inner-padding-end: 0px;--padding-start:0px" class="ion-no-padding" lines="none">
+          <ion-searchbar  showCancelButton="focus" (ionCancel)="searchCancel()" (ionFocus)="searchFocus()" (ionBlur)="cancelFocus()" #event (search)="search_url($event)"   ></ion-searchbar>
+          <ion-chip class="_chip" routerLink="/profile">
+              <ion-avatar >
+                <img class="profile_picture" src="https://picsum.photos/id/237/32/32">  
+              </ion-avatar>
+                <ion-label >kullaniciaaaaaa</ion-label>   
+            </ion-chip>
+ 
+      </ion-item>  
+  
+      </ion-header>     -->
+<!-- 
+      <div *ngIf="!searchHide" style="margin-top: 150px;">
+        asd
+      </div> -->
+
+      <!-- <div class="grid">
+        <div  *ngFor="let item of images">
+          <img  class="grid-item" [src]="item.urls.thumb">
+        </div>
+      </div> -->
+
+
+<!-- 
+      <div style="margin-top: 50px;" class="grid">
+        <ion-icon  *ngIf="!hide" (click)="ToTap()" class="back_to_top_css" style="font-size: 38px;opacity: 0.9;color:blanchedalmond" name="chevron-up-circle-outline"></ion-icon>
+
+        <div  class="grid-item" *ngFor="let item of images,let i=index">
+          <img class="img_animation" style="width: 100%;"  [src]="item.previewURL">
+        </div>
+      </div> -->
+
+      <!-- <div style="margin-top:50px;" class="grid"> -->
+        <!-- <ion-icon  *ngIf="!hide" (click)="ToTap()" class="back_to_top_css"  name="chevron-up-circle"></ion-icon> -->
+   
+      <div class="grid">
+        <div  #close [class]="photoHide">
+  
+
+        <div  class="grid-item" *ngFor="let image of images" >
+        <div  (press)="modal_active(image)"  (pressup)="modal_pasive()" >  
+          <img   class="img_animation"   (load)='resize()'  [src]="image.urls.thumb"  (pan)="heightControl($event)"  (panend)="modal_pasive()"   (pinch)="onPinch($event)"     (click)="double_click(image)">
+          
+        </div>
+        </div>
+      </div>
+
+      </div>
+
+
+
+
+<!-- <div *ngIf="!searchHide">
+
+<div   #close [class]="photoHide"  >
+  <ion-icon  *ngIf="!hide" (click)="ToTap()" class="back_to_top_css"  name="chevron-up-circle"></ion-icon>
+  <div style="margin-top: 50px;" *ngFor="let image of images , let i=index"> 
+
+        <div style="float: left;width: 48%; margin-left: 5px;align-self: stretch;" (press)="modal_active(image)"  (pressup)="modal_pasive()"  *ngIf="i%2==0" >
+     
+
+         <img class="img_animation"   (load)='test()' style="float: left;" [src]="image.urls.thumb"  (pan)="deneme($event)"  (panend)="modal_pasive()"   (pinch)="onPinch($event)"   height="150px"   (click)="double_click(image)">   
+        
+
+        </div>
+   
+        <div style="float: right;width: 48%; margin-right: 5px;align-self: stretch;"   (press)="modal_active(image)" (pressup)="modal_pasive()"  *ngIf="i%2==1" >
+
+        
+            <img class="img_animation"  (load)='test()' style="float:right;"   [src]="image.urls.thumb" (pan)="deneme($event)"  (panend)="modal_pasive()" (pinch)="onPinch($event)"   height="150px"  (click)="double_click(image)">   
+      </div>
+
+
+      </div>
+ </div>
+
+</div>   -->
+
+<ion-infinite-scroll threshold="90px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="crescent"
+    loadingText="">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+ </div>
+  
+  </ion-content>
+  

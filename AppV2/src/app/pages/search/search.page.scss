@@ -1,0 +1,36 @@
+// ion-item ion-searchbar
+// {
+//     padding: 0px !important;
+//     transition-property: all;
+//     transition-duration: 2.5s;
+//     width: 100%;
+//     margin:0 0 0 5px;
+// }
+
+// ion-item ion-searchbar:focus-within
+// {
+//     width: 800%;
+//     ion-icon
+//     {
+//         width: 0;
+//     }
+// }
+
+// ion-item ion-searchbar ion-icon{
+//     transition-property: all;
+//     transition-duration: 1.2s;
+// }
+
+.searchBar{
+    top: 50%;
+  display: block;
+  transition-property: all;
+  transition-duration: 1s;
+  
+  }
+  
+  .searchBar-Focus{
+  top:0;
+  transition-property: all;
+  transition-duration: 1s;
+  }

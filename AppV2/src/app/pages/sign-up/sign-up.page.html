@@ -1,0 +1,163 @@
+<ion-content [fullscreen]="true"  >
+
+    <div *ngIf="page">
+
+  <div  style="margin-top: 10%;" >
+    <ion-icon  style=" font-size: 32px; opacity: 0.5;" (click)="back()" name="chevron-back-outline"></ion-icon>
+    <form [formGroup]="form">
+      <span>
+        <br>
+       <!-- <ion-label style="display: block; text-align: center;  font: bold 20px black Ariel;"></ion-label> -->
+      <ion-item lines="full">
+        <ion-label style="color:whitesmoke;" position="floating">Username</ion-label>
+        <ion-input   (ionInput)="user($event)" formControlName="userName" text="text" maxlength="20">
+          <span *ngIf="inputFocus">@</span>
+        </ion-input>
+      </ion-item>
+
+      <ion-text *ngIf="!form.get('userName').valid && form.get('userName').touched">
+        <ion-text color="danger" *ngIf="form.get('userName').hasError('required')">
+          ⓘ Please enter username!
+        </ion-text>
+       <ion-text color="danger" *ngIf="!form.get('userName').hasError('required') && form.get('userName').hasError('minlength')">
+        ⓘ Your username must be at least 5 characters!
+       </ion-text>
+      </ion-text>
+      <ion-text color="danger" *ngIf="userControl">
+        ⓘ Username already taken.
+       </ion-text>
+   
+      <br>
+     
+        <ion-row>
+          <ion-col>
+            <ion-item lines="full">
+            <ion-label  position="floating" style="float: left;color:whitesmoke;">Name</ion-label>
+            <ion-input maxlength="30" formControlName="name" type="text" required></ion-input>
+      </ion-item>
+      <ion-text *ngIf="!form.get('name').valid && form.get('name').touched">
+        <ion-text color="danger" *ngIf="form.get('name').hasError('required')">
+          ⓘ Please enter your name!
+        </ion-text>
+       <ion-text color="danger" *ngIf="!form.get('name').hasError('required') && form.get('name').hasError('minlength')">
+        ⓘ Please enter your full name!
+       </ion-text>
+
+      </ion-text>
+          </ion-col>
+       
+          <br>
+
+
+
+          <ion-col>
+            <ion-item lines="full">
+            <ion-label position="floating" style="float: left;color:whitesmoke;" >Last name</ion-label>
+            <ion-input maxlength="30" formControlName="lastName" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-text *ngIf="!form.get('lastName').valid && form.get('lastName').touched">
+        <ion-text color="danger" *ngIf="form.get('lastName').hasError('required')">
+          ⓘ Please enter your last name!
+        </ion-text>
+       <ion-text color="danger" *ngIf="!form.get('lastName').hasError('required') && form.get('lastName').hasError('minlength')">
+        ⓘ Please enter your full last name!
+       </ion-text>
+      </ion-text>
+
+          </ion-col>
+        </ion-row>
+        <br>   
+        <ion-item >
+          <br>
+        <ion-segment  formControlName="gender" >
+          <br>
+          <ion-segment-button style="--color-checked:white" value="M">
+
+            <ion-icon name="male-outline"></ion-icon>
+            <ion-label >Male</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button style="--color-checked:white" value="F">
+
+            <ion-icon name="female-outline"></ion-icon>
+            <ion-label>Female</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+      <ion-text *ngIf="!form.get('gender').valid && form.get('gender').touched">
+        <ion-text color="danger" *ngIf="form.get('gender').hasError('required')">
+          ⓘ Please choose your gender!
+        </ion-text>
+      </ion-text>
+          <br>
+      <ion-item lines="full">
+  <ion-label style="color:whitesmoke;"  position="floating">E-mail</ion-label>
+  <ion-input formControlName="email" type="email" required></ion-input>
+    </ion-item>
+    <ion-text *ngIf="!form.get('email').valid && form.get('email').touched">
+      <ion-text color="danger" *ngIf="form.get('email').hasError('required')">
+        ⓘ Please enter your e-mail address!
+      </ion-text>
+     <ion-text color="danger" *ngIf="!form.get('email').hasError('required')  && form.get('email').hasError('pattern') ">
+      ⓘ Please enter a valid e-mail address!
+     </ion-text>
+    </ion-text>
+    
+    <br>
+
+<ion-item lines="full">
+  <ion-label style="color:whitesmoke;" position="floating">Password(6+ characters)</ion-label>
+  <ion-input [attr.maxlength]="30" formControlName="password1" text="password"  [type]="password_type" ></ion-input>
+
+  <ion-icon style="margin-top: 20px;" [hidden]="hide"    name="eye" slot="end" (click)="show_pw1()" ></ion-icon>
+  <ion-icon style="margin-top: 20px;"  [hidden]="!hide"   name="eye-off" slot="end" (click)="show_pw1()" ></ion-icon>
+</ion-item>
+
+<ion-text *ngIf="!form.get('password1').valid && form.get('password1').touched">
+  <ion-text color="danger" *ngIf="form.get('password1').hasError('required')">
+    ⓘ Please enter your password!
+  </ion-text>
+ <ion-text color="danger" *ngIf="!form.get('password1').hasError('required') && form.get('password1').hasError('minlength')
+ && form.get('password1').hasError('pattern')">
+  ⓘ Your password must be at least 6 characters!
+ </ion-text>
+</ion-text>
+<br>
+      <br>
+
+      <ion-item>
+        <ion-checkbox  formControlName="policy" animation="no-animation" style="--border-radius: 20px; --size:20px;--checkmark-color:white;--background-checked:grey;--border-color-checked:grey" ></ion-checkbox>
+        <ion-label style="margin-left: 5px; font-size: 14.5px; ">Accept the privacy policy and the terms of use</ion-label>
+      </ion-item>
+      <ion-text *ngIf="!form.get('policy').valid && form.get('policy').touched">
+        <ion-text color="danger" *ngIf="!form.get('policy').hasError('requiredTrue')">
+          ⓘ Please select to continue!
+        </ion-text>
+      </ion-text>
+      <br>
+        <ion-button  expand="block"  style="--background:grey" (click)="next()">Next</ion-button>
+    </span>
+  </form>
+</div>
+  
+</div>  
+<div  *ngIf="!page">
+
+<div style="  display: flex;flex-direction: column;align-items: center;margin-top:20%">
+
+
+  <ion-avatar style="height: 220px; width: 220px;border: 2px white solid;">
+    <img [src]="pp">
+  </ion-avatar>
+  <ion-label style="font-size: 30px;margin-top: 35px;">Add Profile Photo</ion-label>
+  
+  <ion-button style="--background:grey;margin-top: 5%;width: 70%;"   class="buton"  (click)="getCamera()">Take a new photo</ion-button>
+  <ion-button style="--background:grey;margin-top: 5%;width: 70%;"   class="buton"  (click)="getGallery()">From your device gallery</ion-button>
+</div>
+
+<span class="divider line one-line" style="margin-top: 10%;">or</span>
+<ion-button style="--background:grey;margin-top: 10%;"  expand="block" class="buton"  (click)="route()">Complete Sign Up</ion-button>
+</div>
+
+  </ion-content>

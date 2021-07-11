@@ -1,0 +1,54 @@
+
+<ion-content [fullscreen]="true">
+        
+          <ion-searchbar [class]="searchBarCss"  [showCancelButton]="cancelButton" debounce="0"  (ionChange)="searchAccount($event)"  (ionCancel)="searchCancel()" (ionFocus)="searchFocus()" (ionBlur)="cancelFocus()" (search)="searchPhotos()"  [(ngModel)]="shared.searchWord">
+            <!-- search -> change -->
+          </ion-searchbar>
+          <div>
+  
+
+
+          <div *ngIf="!result">
+
+          <div   *ngFor="let user of tempAccountArray">
+    <ion-item (click)="Account(user)" style="--background:none">
+    <ion-avatar>
+      <img [src]="user.profilPhoto">
+      <!-- user photos-->
+    </ion-avatar>
+    <ion-label style="margin-left: 20px;">{{user.userName}}
+      <!-- username -->
+    <br>
+    {{user.name}} {{user.lastName}}
+    <!-- Name Surname -->
+  </ion-label>
+
+  </ion-item>
+  <br>
+</div>
+
+          </div>
+          <div *ngIf="result">
+            <ion-label style="margin-left: 25px;color: grey;">
+              No user results found for "{{shared.searchWord}}" !
+              <br>
+              <ion-label style="margin-left: 25px;color: grey;">
+                If you want to search for images, press enter.
+
+              </ion-label>
+            </ion-label>
+            </div>
+        </div>
+
+  
+
+<!-- 
+<div style="border-radius: 20px;height: 30px;width: 30px;border: solid 1px white;">
+  <ion-avatar style="height: 28px; width: 28px;border-radius: 20px;margin-top: 0.05mm;">
+    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+  </ion-avatar> 
+</div> -->
+
+  
+  </ion-content>
+  

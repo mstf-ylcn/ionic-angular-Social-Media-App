@@ -1,0 +1,126 @@
+<ion-content (swipe)="SwipeToClose()" [class]="shared.searchModalcss"   #device_height   [fullscreen]="true"   [scrollEvents]="true"
+(ionScroll)="Scrolling($event)"
+(ionScrollEnd)="ScrollEnd($event)" >
+  
+
+
+
+<ion-icon  *ngIf="!hide" (click)="ToTap3()" class="back_to_top_css" style="font-size: 38px;opacity: 0.9;color:whitesmoke" name="chevron-up-circle"></ion-icon>
+
+
+
+
+
+  <div *ngIf="photo">
+
+  <div *ngIf="hidePage">
+
+  <div *ngIf="hide2">
+    <ion-searchbar  [showCancelButton]="cancelButton" debounce="10"  (ionCancel)="searchCancel()" (ionFocus)="searchFocus()" (ionBlur)="cancelFocus()" (search)="searchPhotos()"  [(ngModel)]="shared.searchWord">
+
+
+    </ion-searchbar>
+
+    <div>
+
+
+  <div class="grid3" >
+    <div  [class]="photoHide"> 
+   <div class="grid-item3"  (press)="modal_active(image)"  (pressup)="modal_pasive()" *ngFor="let image of images">
+     <img (load)="resize()" class="img_animation"  [src]="image.urls.thumb" alt=""  (pan)="heightControl($event)"  (panend)="modal_pasive()"   (pinch)="onPinch($event)"    (click)="double_click(image)">
+   </div>
+   </div>
+  </div>
+
+</div>
+
+<div>
+
+</div>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="crescent">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</div>
+
+
+
+
+<div *ngIf="!hide2">
+  <div >  
+  <ion-icon *ngIf="hideBackIcon"   style=" font-size: 32px;opacity: 0.5;background-color: black;position: absolute;z-index: 1000;margin-top: 20px;" (click)="SwipeToClose()" name="chevron-back-outline"></ion-icon> 
+
+    <ion-slides class="image-slide" [options]="sliderOpts" #zoomslides>
+  <ion-slide>
+   <div (touchstart)="barVisible()"  (touchend)="zoomEnd(zoomslides)" class="swiper-zoom-container">
+  
+      <img (panstart)="hideBackButton()" (panend)="hideBackButtonEnd()" class="image" (load)="resize2()"  [src]="mainImages[mainImages.length-1].urls.small" alt="">
+   </div>
+  
+  </ion-slide>
+  
+    </ion-slides>
+  
+     <ion-list>
+  
+       <ion-item>
+  
+       <ion-avatar slot="start"  ><img [src]="mainImages[mainImages.length-1].user.profile_image.small" alt="" (click)="openbrowser(mainImages[mainImages.length-1].user.links.html)" ></ion-avatar>
+       <ion-label (click)="openbrowser(mainImages[mainImages.length-1].user.links.html)" style="font-size: 14px;" >{{mainImages[mainImages.length-1].user.username}}  </ion-label>
+       <div style="margin-top: 1%;">
+        
+         <ion-icon class="hearthbeat" style="font-size: 38px;float:left;" name="heart-outline" *ngIf="hidecontrol==0"
+          (click)="likes(mainImages[mainImages.length-1])"></ion-icon>
+  
+         <ion-icon class="hearthbeat"  *ngIf="hidecontrol==1" style="font-size: 38px;color: red; float: left;"  
+         (click)="unlike(mainImages[mainImages.length-1])"  name="heart-dislike"></ion-icon>
+         
+  
+       <ion-icon  style="font-size: 32px;float: right;" name="share-outline" (click)="share(mainImages[mainImages.length-1].links.html)"></ion-icon> 
+     </div>
+  
+     </ion-item>
+     </ion-list>
+  
+     </div>
+   
+  
+     </div>
+  
+  
+  
+  
+    
+
+</div>
+
+
+</div >
+
+<div *ngIf="!photo">
+  <ion-searchbar  [showCancelButton]="cancelButton" debounce="10"  (ionCancel)="searchCancel()" (ionFocus)="searchFocus()" (ionBlur)="cancelFocus()" (search)="searchPhotos()"  [(ngModel)]="shared.searchWord">    </ion-searchbar>
+   
+
+
+
+   <ion-label style="font-size:20px;text-align: center;position: fixed;  top:50%;width:95%;color: grey;">
+    No results found for "{{word}}"
+   </ion-label>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

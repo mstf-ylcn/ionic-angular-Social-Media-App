@@ -1,0 +1,98 @@
+
+  
+  <ion-content  [fullscreen]="true" >
+
+<div *ngIf="!hidePage" >
+
+ <img style="position: absolute;margin-top: -50%;" src="../../../assets/logo.png" alt="">
+  
+ <div style="margin-top: 70%;"   >
+  
+  
+    <form [formGroup]="form">
+  
+      <ion-item style="--background:transparent" lines="full">
+        <ion-label style="color:whitesmoke;" position="floating">E-mail</ion-label>
+        <ion-input   formControlName="email" text="text"  maxlength="100" >       
+        </ion-input>
+       </ion-item>
+  <br>
+  
+      <ion-text *ngIf="!form.get('email').valid && form.get('email').touched">
+        <ion-text color="danger" *ngIf="form.get('email').hasError('required')">
+          ⓘ Please enter your e-mail!  
+        </ion-text>
+       <ion-text color="danger"  *ngIf="!form.get('email').hasError('required')  && form.get('email').hasError('pattern') ">
+
+       </ion-text>
+      </ion-text>
+
+      <ion-item style="--background:transparent" lines="full">
+        <ion-label style="color:whitesmoke;" position="floating">Password</ion-label>
+        <ion-input [attr.maxlength]="30" formControlName="password" text="password"  [type]="password_type" ></ion-input>
+  
+        <ion-icon style="margin-top: 20px;" [hidden]="hide"    name="eye" slot="end" (click)="show_pw()" ></ion-icon>
+        <ion-icon style="margin-top: 20px;"  [hidden]="!hide"   name="eye-off" slot="end" (click)="show_pw()" ></ion-icon>
+      </ion-item>
+      <br>
+      <ion-text *ngIf="!form.get('password').valid && form.get('password').touched">
+        <ion-text color="danger" *ngIf="form.get('password').hasError('required')">
+          ⓘ Please enter your password!
+        </ion-text>
+       <ion-text color="danger" *ngIf="!form.get('password').hasError('required') && form.get('password').hasError('minlength')">
+    
+       </ion-text>
+      </ion-text>
+  <br>
+      <ion-row>
+        <ion-col>
+          <ion-button  style="--background:grey" (click)="login()" expand="block">Login</ion-button>
+          <ion-label style="display: block; margin-top:  40px;text-align: center;" (click)="forget()" color="gray" class="small-text">Forget Password ?</ion-label>
+        </ion-col>
+      </ion-row>  
+    </form>
+
+    
+
+
+    <div  class="login_sign">
+
+      <ion-grid>
+        <ion-row  >
+          <ion-col align-self-center>
+            
+    
+            <span style="margin-top: 20px;" class="divider line one-line">or</span>
+            <span  style="font-size: 20px;margin-top: 40px; color: grey;" class="already">Don't have an account ?    
+              <span  (click)="signUp()"  style="color: White;font-size: 20px;">
+              <u>    Sign Up.</u>
+            </span> </span>
+            <!-- <ion-button style="--background:grey"  expand="block" class="buton"  (click)="signUp()">Sign Up</ion-button> -->
+    
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</div>
+     
+
+<div *ngIf="hidePage">
+    <ion-toolbar style="--background: transparent;">
+      <ion-icon (click)="back()" name="close-outline" style="font-size:32px;float: right;margin-right: 15px;margin-top: 10px;"></ion-icon>
+    </ion-toolbar>
+  <div style="margin-top: 80%;">
+
+  <ion-item style="--background:transparent" lines="full">
+    <ion-label style="color:whitesmoke;" position="floating">E-mail</ion-label>
+    <ion-input (ionInput)="mailData($event)"  text="text"  maxlength="100" >       
+    </ion-input>
+   </ion-item>
+  </div>
+  <ion-button style="--background:grey;margin-top: 30px;"  expand="block" class="buton"  (click)="resetPw()">Reset Password</ion-button>
+
+</div>
+    
+      
+    
+    </ion-content>

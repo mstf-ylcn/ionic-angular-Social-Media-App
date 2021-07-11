@@ -1,0 +1,32 @@
+.grid3 {
+  margin: 0 auto;
+  }
+  .grid-item3 { width: 47.2%;min-width:170px;margin:5px; }
+  .grid-item--width3 { width: 400px; ;margin-bottom:2px;}
+  .grid7 {
+    margin: 0 auto;
+    }
+    .grid-item7 { width: 47.2%;min-width:170px;margin:5px; }
+    .grid-item--width7 { width: 400px; ;margin-bottom:2px;}
+
+.loading{
+    display: none;
+  }
+.loaded{
+display: block;
+}
+.back_to_top_css{ 
+  position: fixed;
+font-size: 36px;
+  left: 90%;
+  transform: translateX(-50%);
+  bottom: 50px;
+  z-index: 999;
+}
+image,
+.image-slide{
+  overflow: visible;
+}
+.image{
+  z-index: 999;
+}

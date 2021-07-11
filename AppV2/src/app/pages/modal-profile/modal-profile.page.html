@@ -1,0 +1,108 @@
+<ion-content (swipe)="SwipeToClose()" [scrollEvents]="true"
+(ionScroll)="Scrolling($event)"
+(ionScrollEnd)="ScrollEnd()">
+
+  
+<div *ngIf="pageHide">
+
+  <ion-icon *ngIf="hide2"  style=" font-size: 42px; opacity: 0.5;position: absolute;margin-top: 5%;" (click)="back()" name="chevron-back-outline"></ion-icon> 
+
+<ion-icon *ngIf="profileHidePage" (click)="open()" style="float: right;font-size: 32px;margin-top: 10px;margin-right: 15px;" name="menu-outline"></ion-icon>
+
+
+<div *ngIf="hide2">
+           <ion-avatar  style="margin: 10% auto 0 auto; height: 130px; width: 130px;border: 2px white solid;"> 
+            <img [src]="shared.searchUserArray.profilPhoto">
+          </ion-avatar>
+
+          <div>
+            <ion-item style="--ion-item-background:#transparent;" lines="none">
+              <ion-label class="ion-text-center" style="font-size: 25px;margin-top: 20px;margin-bottom: 10px;color: grey;">{{shared.searchUserArray.name}} {{shared.searchUserArray.lastName}}</ion-label>
+            </ion-item>
+            <ion-item  style="--ion-item-background:#transparent; margin-top: -15px;" >
+            <ion-label class="ion-text-center" style="color: grey;">{{shared.searchUserArray.userName}}</ion-label>
+            </ion-item>
+            </div>
+
+          <div style="height: 1px;" >
+            <hr style="background: rgb(78, 77, 77); font-size: 0.5px;opacity: 0.9;" >
+          </div>
+
+          <br>
+
+
+   <div *ngIf="photo">
+
+
+<div *ngIf="shared.searchUserArray.Like.length!=0">
+
+<div  class="grid7" >
+  <div  [class]="photoHide"> 
+ <div class="grid-item7"  *ngFor="let image of shared.searchUserArray.Like,let i=index">
+   <img (load)="resize()" class="img_animation"  [src]="image.photoUrl" alt=""   (click)="double_click(i)">
+ </div>
+ </div>
+
+</div>
+</div>
+
+</div>
+
+</div>       
+
+
+
+
+<div   *ngIf="!hide2">
+
+
+ <div >  
+  <ion-icon *ngIf="hideBackIcon"   style=" font-size: 32px;opacity: 0.5;background-color: black;position: absolute;z-index: 1000;margin-top: 20px;" (click)="SwipeToClose()" name="chevron-back-outline"></ion-icon> 
+
+    <ion-slides class="image-slide" [options]="sliderOpts" #zoomslides>
+  <ion-slide>
+   <div (touchstart)="barVisible()"  (touchend)="zoomEnd(zoomslides)" class="swiper-zoom-container">
+  
+      <img (panstart)="hideBackButton()" (panend)="hideBackButtonEnd()" class="image" (load)="resize2()"  [src]="clickPhoto.photoUrl" alt="">
+   </div>
+  
+  </ion-slide>
+  
+    </ion-slides>
+  
+     <ion-list>
+  
+       <ion-item>
+  
+       <ion-avatar slot="start"  ><img [src]="clickPhoto.pp" alt="" (click)="openbrowser(clickPhoto.userUrl)" ></ion-avatar>
+       <ion-label (click)="openbrowser(clickPhoto.userUrl)" style="font-size: 14px;" >{{clickPhoto.name}}  </ion-label>
+       <div style="margin-top: 1%;">
+        
+         <ion-icon class="hearthbeat" style="font-size: 38px;float:left;" name="heart-outline" *ngIf="hidecontrol==0"
+          (click)="likes()"></ion-icon>
+  
+         <ion-icon class="hearthbeat"  *ngIf="hidecontrol==1" style="font-size: 38px;color: red; float: left;"  
+         (click)="unlike()"  name="heart-dislike"></ion-icon>
+         
+  
+       <ion-icon  style="font-size: 32px;float: right;" name="share-outline" (click)="share(clickPhoto.share)"></ion-icon> 
+     </div>
+  
+     </ion-item>
+     </ion-list>
+  
+     </div>
+    </div> 
+</div>
+
+<div *ngIf="!photo">
+  <ion-label style="font-size:20px;text-align: center;position: fixed;  bottom:38%;width:95%;color: grey;">
+    
+ No images liked yet.
+
+   </ion-label>
+</div>
+
+
+
+</ion-content>

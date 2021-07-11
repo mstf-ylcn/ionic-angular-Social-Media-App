@@ -1,0 +1,77 @@
+<ion-content (swipe)="SwipeToClose()"  [class]="modal_css"  #device_height [fullscreen]="true"   [scrollEvents]="true"
+(ionScrollStart)="ScrollStart($event)"
+(ionScroll)="Scrolling($event)"
+(ionScrollEnd)="ScrollEnd($event)" >
+
+
+
+     <div>
+    <div >  
+  <ion-icon *ngIf="hideBackIcon"   style=" font-size: 32px;opacity: 0.5;background-color: black;position: absolute;z-index: 1000;margin-top: 20px;" (click)="SwipeToClose()" name="chevron-back-outline"></ion-icon> 
+
+  <ion-slides class="image-slide" [options]="sliderOpts" #zoomslides>
+<ion-slide>
+ <div (touchstart)="barVisible()"  (touchend)="zoomEnd(zoomslides)" class="swiper-zoom-container">
+
+    <img (panstart)="hideBackButton()" (panend)="hideBackButtonEnd()" [src]="mainImages[mainImages.length-1].urls.small" alt="">
+ </div>
+</ion-slide>
+  </ion-slides>
+   <ion-list>
+     <ion-item>
+     <ion-avatar slot="start"  ><img [src]="mainImages[mainImages.length-1].user.profile_image.small" alt="" (click)="openbrowser(mainImages[mainImages.length-1].user.links.html)" ></ion-avatar>
+     <ion-label (click)="openbrowser(mainImages[mainImages.length-1].user.links.html)" style="font-size: 14px;" >{{mainImages[mainImages.length-1].user.username}}  </ion-label>
+     <div style="margin-top: 1%;">
+       <ion-icon class="hearthbeat" style="font-size: 38px;float:left;" name="heart-outline" *ngIf="hidecontrol==0"
+        (click)="like(mainImages[mainImages.length-1])"></ion-icon> 
+       <ion-icon class="hearthbeat"  *ngIf="hidecontrol==1" style="font-size: 38px;color: red; float: left;"  
+       (click)="unlike(mainImages[mainImages.length-1])"  name="heart-dislike"></ion-icon>
+     <ion-icon  style="font-size: 32px;float: right;" name="share-outline" (click)="share(mainImages[mainImages.length-1].links.html)"></ion-icon>  <!-- share -->
+   </div>
+   </ion-item>
+   </ion-list>
+   </div>
+   </div>
+
+
+
+
+   
+   <div *ngIf="hide2">
+   <div  class="grid2" >
+    <div  [class]="photoHide"> 
+   <div class="grid-item2"  (press)="modal_active(image)"  (pressup)="modal_pasive()" *ngFor="let image of imagesLib[imagesLib.length-1]">
+     <img (load)="resize()" class="img_animation"  [src]="image.urls.thumb" alt=""  (pan)="heightControl($event)"  (panend)="modal_pasive()"   (pinch)="onPinch($event)"    (click)="double_click(image)">
+   </div>
+   </div>
+
+  </div>
+</div>
+
+
+
+
+  <!-- <ion-fab style="margin-bottom: 10px;opacity: 0.8;" mode="ios" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button  color="light">
+      <ion-icon name="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button (click)="profilePage()" style="width: 50px;height: 50px;" color="light">
+        <ion-icon name="person"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="searchPage()" style="width: 50px;height: 50px;" color="light">
+        <ion-icon name="search"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="photosPage()" 
+      style="width: 50px;height: 50px;" color="light">
+        <ion-icon name="home"></ion-icon>
+ 
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+
+
+
+
+</ion-content>

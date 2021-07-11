@@ -1,0 +1,227 @@
+<ion-header *ngIf="shared.editProfile">
+  <ion-toolbar>
+    <ion-item>
+    <ion-icon (click)="back()" style="font-size: 32px;"  name="close-outline"></ion-icon>
+    <ion-title style="text-align: center;">Edit Profile</ion-title>
+    <ion-icon (click)="editProfile()" style="font-size: 32px;" name="checkmark-outline"></ion-icon>
+  </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-header *ngIf="shared.accountSettings">
+  <ion-toolbar>
+    <ion-item>
+    <ion-icon (click)="back()" style="font-size: 32px;"  name="close-outline"></ion-icon>
+    <ion-title style="text-align: center;margin-right: 25px;">Account Settings</ion-title>
+
+  </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-header *ngIf="shared.feedBack">
+  <ion-toolbar>
+    <ion-item>
+    <ion-icon (click)="back()" style="font-size: 32px;"  name="close-outline"></ion-icon>
+    <ion-title style="text-align: center;margin-right: 25px;">Feedback</ion-title>
+  </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-header *ngIf="shared.about">
+  <ion-toolbar>
+    <ion-item>
+    <ion-icon (click)="back()" style="font-size: 32px;"  name="close-outline"></ion-icon>
+    <ion-title style="text-align: center;margin-right: 25px;">About</ion-title>
+  </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (swipe)="back()">
+
+<div *ngIf="shared.editProfile" style="margin-top: 20%;">
+
+
+  <ion-avatar  style="margin: 10% auto 0 auto; height: 130px; width: 130px;border: 2px white solid;"> 
+    <img [src]="shared.pp">
+  </ion-avatar>
+  <ion-label (click)="cameraModal()" style="text-align: center;font-size: 20px;display: block;margin-top:15px;color: grey;">Change Profile Photo</ion-label>
+
+<br>
+<form [formGroup]="form">
+  <span>
+    <br>
+  <ion-item lines="full">
+    <ion-label style="color:whitesmoke;" position="floating">Username</ion-label>
+    <ion-input  (ionInput)="user($event)" formControlName="userName" text="text" maxlength="20">
+      <span *ngIf="inputFocus">@</span>
+    </ion-input>
+  </ion-item>
+
+
+   <ion-text color="danger" *ngIf="!form.get('userName').hasError('required') && form.get('userName').hasError('minlength')">
+    ⓘ Your username must be at least 5 characters!
+   </ion-text>
+  <ion-text color="danger" *ngIf="userControl">
+    ⓘ Username already taken.
+   </ion-text>
+
+  <br>
+ 
+    
+        <ion-item lines="full">
+        <ion-label  position="floating" style="float: left;color:whitesmoke;">Name</ion-label>
+        <ion-input  maxlength="30" formControlName="name" type="text" required></ion-input>
+  </ion-item>
+   <ion-text color="danger" *ngIf="!form.get('name').hasError('required') && form.get('name').hasError('minlength')">
+    ⓘ Please enter your full name!
+   </ion-text>
+
+   
+      <br>
+
+
+
+ 
+        <ion-item lines="full">
+        <ion-label position="floating" style="float: left;color:whitesmoke;" >Last name</ion-label>
+        <ion-input  maxlength="30" formControlName="lastName" type="text" required></ion-input>
+  </ion-item>
+
+
+   <ion-text color="danger" *ngIf="!form.get('lastName').hasError('required') && form.get('lastName').hasError('minlength')">
+    ⓘ Please enter your full last name!
+   </ion-text>
+
+
+</span>
+</form>
+</div>
+
+<div *ngIf="shared.accountSettings" style="margin-top: 20%;">
+  <ion-avatar  style="margin: 10% auto 0 auto; height: 130px; width: 130px;border: 2px white solid;"> 
+    <img [src]="shared.pp">
+  </ion-avatar>
+
+  <form [formGroup]="form2">
+    <ion-item style="--background:transparent" lines="full">
+      <ion-label style="color:whitesmoke;" position="floating">E-mail</ion-label>
+      <ion-input   formControlName="email" text="text"  maxlength="100" >       
+      </ion-input>
+     </ion-item>
+<br>
+
+    <ion-text *ngIf="!form2.get('email').valid && form2.get('email').touched">
+      <ion-text color="danger" *ngIf="form2.get('email').hasError('required')">
+        ⓘ Please enter your e-mail!  
+      </ion-text>
+     <ion-text color="danger"  *ngIf="!form2.get('email').hasError('required')  && form2.get('email').hasError('pattern') ">
+
+     </ion-text>
+    </ion-text>
+
+   
+    <!-- <ion-text *ngIf="!form2.get('password1').valid && form2.get('password1').touched">
+      <ion-text color="danger" *ngIf="form2.get('password1').hasError('required')">
+        ⓘ Please enter your password!
+      </ion-text>
+     <ion-text color="danger" *ngIf="!form2.get('password1').hasError('required') && form2.get('password1').hasError('minlength')">
+  
+     </ion-text>
+    </ion-text> -->
+<br>
+
+
+  </form>
+  <ion-item style="--background:transparent" lines="full">
+    <ion-label style="color:whitesmoke;" position="floating">Password</ion-label>
+    <ion-input  [(ngModel)]="password1"  minlength="6"   [type]="password_type" ></ion-input>
+  
+    <ion-icon style="margin-top: 20px;" [hidden]="hide"    name="eye" slot="end" (click)="show_pw()" ></ion-icon>
+    <ion-icon style="margin-top: 20px;"  [hidden]="!hide"   name="eye-off" slot="end" (click)="show_pw()" ></ion-icon>
+  </ion-item>
+  <br>
+  <ion-button style="--background:grey"  expand="block" class="buton"  (click)="changeEmail()">Change Email</ion-button>
+
+  <br>
+  <br>
+
+  <ion-item style="--background:transparent" lines="full">
+    <ion-label style="color:whitesmoke;" position="floating">Password</ion-label>
+    <ion-input  [(ngModel)]="password2"  minlength="6"   [type]="password_type2" ></ion-input>
+  
+    <ion-icon style="margin-top: 20px;" [hidden]="hide2"    name="eye" slot="end" (click)="show_pw2()" ></ion-icon>
+    <ion-icon style="margin-top: 20px;"  [hidden]="!hide2"   name="eye-off" slot="end" (click)="show_pw2()" ></ion-icon>
+  </ion-item>
+
+  <ion-item style="--background:transparent" lines="full">
+    <ion-label style="color:whitesmoke;" position="floating">New Password(6+ characters)</ion-label>
+    <ion-input  [(ngModel)]="password3"  minlength="6"   [type]="password_type3" ></ion-input>
+  
+    <ion-icon style="margin-top: 20px;" [hidden]="hide3"    name="eye" slot="end" (click)="show_pw3()" ></ion-icon>
+    <ion-icon style="margin-top: 20px;"  [hidden]="!hide3"   name="eye-off" slot="end" (click)="show_pw3()" ></ion-icon>
+  </ion-item>
+
+  <br>
+  <ion-button style="--background:grey"  expand="block" class="buton"  (click)="changePw()">Change Password</ion-button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="shared.feedBack">
+  <div style="position: fixed;  top:30%;width:95%">
+
+
+ 
+  <ion-item class="item" >
+    <ion-label style="color:whitesmoke;" >Subject:</ion-label>
+    <ion-input placeholder="(min 5+ characters)" [(ngModel)]="subject"  minlength="5" maxlength="30" text="text" >
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="item">
+    <ion-label ></ion-label>
+    <ion-textarea placeholder="Text(min 10+ characters)" [(ngModel)]="text"  minlength="10"  rows="10" cols="30"></ion-textarea>
+  </ion-item>
+<ion-button style="--background:grey;margin-top: 30px;" (click)="feedback()" expand="block" class="buton"  >Submit</ion-button>
+</div>
+
+
+
+</div>
+
+
+<div *ngIf="shared.about">
+ <ion-card (click)="openAbout()" style="text-align: center;height: 40px;padding-top: 5px; position: fixed;  top:50%;width:95%;">
+   <ion-label style="font-size: 20px;color: grey;">
+  github.com/mstf-ylcn
+   </ion-label>
+ </ion-card>
+</div>
+
+
+
+
+
+
+
+</ion-content>

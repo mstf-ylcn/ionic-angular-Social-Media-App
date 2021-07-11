@@ -1,0 +1,67 @@
+<ion-app>
+
+
+  <ion-menu   side="end" menuId="first" contentId="main">
+
+    <ion-content>
+     
+<div style="margin-top:40%;display: block;">
+
+  <ion-item (click)="editProfile()">
+    <ion-icon style="font-size: 32px; opacity:0.5;" name="person-circle-outline"></ion-icon>
+    <ion-label style="font-size: 20px; margin-left: 5px;">Edit Profile</ion-label>
+  </ion-item>
+<br>
+  <ion-item (click)="accountSettings()">
+    <ion-icon style="font-size: 32px; opacity:0.5;" name="settings-outline"></ion-icon>
+    <ion-label style="font-size: 20px; margin-left: 5px;">Account Settings</ion-label>
+  </ion-item>
+
+
+  <br>
+  <ion-item (click)="Notifications()">
+    <ion-icon style="font-size: 32px; opacity:0.5;" name="notifications-outline"></ion-icon>
+    <ion-label style="font-size: 20px; margin-left: 5px;">Notifications</ion-label>
+  </ion-item>
+
+
+<br>
+
+<ion-item (click)="Feedback()">
+  <ion-icon style="font-size: 32px; opacity:0.5;" name="mail-outline"></ion-icon>
+  <ion-label style="font-size: 20px; margin-left: 5px;">Feedback</ion-label>
+</ion-item>
+
+
+
+
+
+<br>
+  <ion-item (click)="About()" >
+    <ion-icon style="font-size: 32px; opacity:0.5;" name="information-circle-outline"></ion-icon>
+    <ion-label style="font-size: 20px; margin-left: 5px;">About</ion-label>
+  </ion-item>
+  <br>
+
+
+
+
+
+
+  <ion-item style="--background:transparent;
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  z-index: 900;"  (click)="logout()" >
+<ion-icon style="font-size: 32px;" name="log-out-outline"></ion-icon>
+<ion-label style="font-size: 20px;margin-left: 5px;" >Log Out</ion-label>
+</ion-item>
+
+
+
+</div>
+
+    </ion-content>
+  </ion-menu>
+ <ion-router-outlet id="main"   ></ion-router-outlet>
+</ion-app>

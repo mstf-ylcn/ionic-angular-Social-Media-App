@@ -1,0 +1,23 @@
+.profile_img{
+    border-radius: 5px;
+
+}
+
+  .grid6 {
+    margin: 0 auto;
+    }
+    .grid-item6 { width: 30.5%;margin:5px; }
+    .grid-item--width6 { width: 33.333%;margin-bottom:2px;}
+    image,
+    .image-slide{
+      overflow: visible;
+    }
+    .image{
+      z-index: 800;
+    }
+    .loading{
+      display: none;
+    }
+.loaded{
+display: block;
+}

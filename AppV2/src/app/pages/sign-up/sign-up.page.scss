@@ -1,0 +1,45 @@
+ion-item{
+    --background:transparent;
+} 
+.divider {
+    display: flex;
+    
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+  }
+  
+  .line {
+    align-items: center;
+    margin: 1em -1em;
+    color: #cccccc;
+    
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+  } 
+  
+  .one-line {
+    &:before,
+    &:after {
+       background: #cccccc;
+    }
+  }
+  
+  
+  //butonlar arası text
+  .already {
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+   color:rgb(104, 93, 93);
+  }
+
+  .item-interactive.ion-valid
+{
+  --highlight-background:grey;
+}
