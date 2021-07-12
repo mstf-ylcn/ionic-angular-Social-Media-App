@@ -58,7 +58,5 @@ ionic build
     <img src="https://user-images.githubusercontent.com/83976212/125309153-3020db00-e33a-11eb-9e8a-1cea7467b77f.jpg"  width="250" />
   
     <img src="https://user-images.githubusercontent.com/83976212/125309158-31520800-e33a-11eb-9038-6939a3cf238a.jpg"  width="250" />
-  
-  
 </p>
 
