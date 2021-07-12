@@ -66,5 +66,11 @@ ionic build
 </p>
 
 
+  <img src="https://user-images.githubusercontent.com/83976212/125311179-e3d69a80-e33b-11eb-8ce3-da6f8ac8e6af.mp4"  width="230" />
+
+https://user-images.githubusercontent.com/83976212/125311179-e3d69a80-e33b-11eb-8ce3-da6f8ac8e6af.mp4
+
+
+
 
 
