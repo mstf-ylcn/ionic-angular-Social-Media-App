@@ -33,9 +33,9 @@ ionic build
 <p float="left">
 <img src="https://user-images.githubusercontent.com/83976212/125310460-454a3980-e33b-11eb-92c3-53cbf3d6befd.gif"  width="230" />
 
-  <img src="https://user-images.githubusercontent.com/83976212/125310474-48452a00-e33b-11eb-969f-5938dae4578f.gif"  width="230" />
+  <img src="https://user-images.githubusercontent.com/83976212/125311547-28623600-e33c-11eb-8619-70f3b609adf0.gif"  width="230" />
 
-  <img src="https://user-images.githubusercontent.com/83976212/125310484-4aa78400-e33b-11eb-8ad9-def1a9ed1d33.gif"  width="230" />
+  <img src="https://user-images.githubusercontent.com/83976212/125311560-2bf5bd00-e33c-11eb-87f2-1e15aad7230b.gif"  width="230" />
 
 
 </p>
@@ -65,10 +65,6 @@ ionic build
 
 </p>
 
-
-  <img src="https://user-images.githubusercontent.com/83976212/125311179-e3d69a80-e33b-11eb-8ce3-da6f8ac8e6af.mp4"  width="230" />
-
-https://user-images.githubusercontent.com/83976212/125311179-e3d69a80-e33b-11eb-8ce3-da6f8ac8e6af.mp4
 
 
 
