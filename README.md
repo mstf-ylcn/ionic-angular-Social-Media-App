@@ -28,10 +28,19 @@ npm i status-bar
 ionic build
 
 
+<br><br>
+
+<p float="left">
+<img src="https://user-images.githubusercontent.com/83976212/125310460-454a3980-e33b-11eb-92c3-53cbf3d6befd.gif"  width="230" />
+
+  <img src="https://user-images.githubusercontent.com/83976212/125310474-48452a00-e33b-11eb-969f-5938dae4578f.gif"  width="230" />
+
+  <img src="https://user-images.githubusercontent.com/83976212/125310484-4aa78400-e33b-11eb-8ad9-def1a9ed1d33.gif"  width="230" />
 
 
+</p>
 
-
+<br><br>
 <p float="left">
 <img src="https://user-images.githubusercontent.com/83976212/125309014-11224900-e33a-11eb-9099-f3b1d661df32.jpg"  width="230" />
 
@@ -55,4 +64,7 @@ ionic build
 
 
 </p>
+
+
+
 
